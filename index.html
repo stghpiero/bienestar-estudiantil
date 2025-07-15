@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienestar Estudiantil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bienestar Estudiantil</h1>
+            <p>Tu apoyo para la vida académica.</p>
+        </header>
+
+        <section id="main-screen">
+            <h2>¿Cómo te sientes hoy?</h2>
+            <div class="emojis">
+                <span>😢</span>
+                <span>😔</span>
+                <span>😐</span>
+                <span>😊</span>
+                <span>😁</span>
+            </div>
+            <button id="start-survey-btn">Entrar a Encuestas</button>
+        </section>
+
+        <section id="survey-screen" class="hidden">
+            <h2>Cuestionario de Ansiedad para Estudiantes</h2>
+            <form id="anxiety-survey-form">
+                </form>
+            <button id="submit-survey-btn">Enviar Respuestas</button>
+        </section>
+
+        <section id="result-screen" class="hidden">
+            <h2>Tu Resultado</h2>
+            <p id="result-message"></p>
+            <button id="reset-survey-btn">Volver a Empezar</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
