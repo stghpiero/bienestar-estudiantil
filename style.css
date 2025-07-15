@@ -1,169 +1,132 @@
-/* Estilos generales para el cuerpo de la página */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente más moderna */
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #6dd5ed, #2193b0); /* Degradado de fondo llamativo */
+    background-color: #f4f4f4;
     color: #333;
+    line-height: 1.6;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
-    overflow-x: hidden; /* Evita barras de desplazamiento horizontales */
+    flex-direction: column;
+    min-height: 100vh; /* Para que el footer se quede abajo */
 }
 
-/* Contenedor principal de la aplicación */
-.container {
-    background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco semi-transparente */
-    padding: 40px; /* Más padding para espacio */
-    border-radius: 15px; /* Bordes más redondeados */
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
-    width: 90%; /* Más ancho en pantallas pequeñas */
-    max-width: 700px; /* Ancho máximo para pantallas grandes */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem 0;
     text-align: center;
-    box-sizing: border-box;
-    transform: translateY(0); /* Para futuras animaciones si se desea */
-    transition: transform 0.5s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Encabezado */
-header h1 {
-    color: #007bff; /* Un azul vibrante */
-    margin-bottom: 10px;
-    font-size: 2.5em; /* Tamaño de fuente más grande */
-    font-weight: 700; /* Negrita */
+main {
+    flex: 1; /* Permite que el contenido principal ocupe el espacio disponible */
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
-header p {
-    color: #555;
-    margin-top: 0;
-    margin-bottom: 40px;
-    font-size: 1.1em;
-}
-
-/* Títulos de sección */
 h2 {
-    color: #444;
-    margin-bottom: 25px;
-    font-size: 1.8em;
+    color: #007bff;
+    margin-bottom: 20px;
 }
 
-/* Emojis */
+.emojis {
+    font-size: 2.5em; /* Tamaño grande para los emojis */
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
 .emojis span {
-    font-size: 4.5em; /* Emojis más grandes */
-    margin: 0 10px;
-    cursor: default;
-    transition: transform 0.2s ease-in-out;
+    display: inline-block;
+    padding: 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: transform 0.2s, border 0.2s;
 }
 
 .emojis span:hover {
-    transform: scale(1.1); /* Efecto al pasar el ratón */
+    transform: scale(1.1);
 }
 
-/* Botones */
+/* Estado seleccionado para los emojis (se añade con JS) */
+.emojis span.selected {
+    border: 2px solid #007bff; /* Borde azul para el seleccionado */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+
 button {
-    background-color: #007bff; /* Color azul para botones */
+    background-color: #007bff;
     color: white;
-    padding: 15px 35px; /* Más padding */
     border: none;
-    border-radius: 30px; /* Botones más redondeados (píldora) */
-    font-size: 1.2em; /* Texto más grande en botones */
+    padding: 12px 25px;
+    margin-top: 20px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 35px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    letter-spacing: 0.5px; /* Espaciado entre letras */
+    font-size: 1em;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
-    transform: translateY(-3px); /* Pequeño efecto de elevación */
+    background-color: #0056b3;
 }
 
-button:active {
-    transform: translateY(0); /* Efecto de "clic" */
+/* Estilos para el formulario de encuesta */
+.question {
+    margin-bottom: 20px;
+    text-align: left;
+    padding: 15px;
+    background-color: #f0f8ff; /* Azul muy claro */
+    border-left: 5px solid #007bff;
+    border-radius: 5px;
 }
 
-/* Elementos ocultos */
+.question label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.question-options label {
+    font-weight: normal; /* Las opciones no tan negritas */
+    margin-left: 5px;
+}
+
+.question-options input[type="radio"] {
+    margin-right: 5px;
+}
+
+
+/* Utilidad para ocultar secciones */
 .hidden {
     display: none;
 }
 
-/* Estilos para el formulario de encuestas */
-#anxiety-survey-form label {
-    display: block;
-    text-align: left;
-    font-weight: bold;
-    margin-top: 25px;
-    margin-bottom: 12px;
-    color: #444;
-    font-size: 1.15em;
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 20px;
 }
 
-#anxiety-survey-form .question-options {
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-#anxiety-survey-form .question-options input[type="radio"] {
-    margin-right: 10px;
-    transform: scale(1.3); /* Agrandar un poco el radio button */
-    cursor: pointer;
-}
-
-#anxiety-survey-form .question-options label {
-    font-weight: normal;
-    display: inline-block;
-    margin-bottom: 8px;
-    cursor: pointer;
-    font-size: 1.05em;
-    color: #333;
-}
-
-/* Estilos para la pantalla de resultados */
-#result-screen p {
-    font-size: 1.3em;
-    line-height: 1.7;
-    margin-bottom: 35px;
-    padding: 20px;
-    background-color: #e6f7ff; /* Fondo azul claro para resultados */
-    border-left: 6px solid #007bff; /* Borde más prominente */
-    border-radius: 8px;
-    text-align: justify; /* Texto justificado para mejor lectura */
-    color: #222;
-    box-shadow: inset 0 0 10px rgba(0, 123, 255, 0.1); /* Sombra interna sutil */
-}
-
-/* Media Queries para responsividad (se adapta a diferentes tamaños de pantalla) */
+/* Responsive design para pantallas pequeñas */
 @media (max-width: 600px) {
-    .container {
-        padding: 25px;
-        width: 95%; /* Un poco más de ancho en móviles */
-    }
-
-    header h1 {
-        font-size: 2em;
-    }
-
-    .emojis span {
-        font-size: 3.5em;
-        margin: 0 5px;
-    }
-
-    button {
-        padding: 12px 25px;
-        font-size: 1em;
-    }
-
-    #result-screen p {
-        font-size: 1.1em;
+    main {
+        margin: 10px;
         padding: 15px;
     }
-
-    #anxiety-survey-form label {
-        font-size: 1em;
+    button {
+        padding: 10px 20px;
+        font-size: 0.9em;
     }
-
-    #anxiety-survey-form .question-options input[type="radio"] {
-        transform: scale(1.1);
+    .emojis span {
+        font-size: 2em;
+        margin: 0 3px;
     }
 }

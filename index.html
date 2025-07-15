@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Bienestar Estudiantil</h1>
-            <p>Tu apoyo para la vida académica.</p>
-        </header>
+    <header>
+        <h1>Bienestar Estudiantil</h1>
+    </header>
 
+    <main>
         <section id="main-screen">
             <h2>¿Cómo te sientes hoy?</h2>
+            <p>Selecciona un emoji para reflejar tu estado de ánimo general antes de empezar:</p>
             <div class="emojis">
                 <span>😢</span>
                 <span>😔</span>
@@ -22,11 +22,16 @@
                 <span>😊</span>
                 <span>😁</span>
             </div>
+            <div style="margin-top: 20px;">
+                <label for="userName" style="display: block; margin-bottom: 5px; font-weight: bold;">Tu nombre:</label>
+                <input type="text" id="userName" placeholder="Ingresa tu nombre" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 80%; max-width: 300px;">
+            </div>
             <button id="start-survey-btn">Entrar a Encuestas</button>
+            <button id="admin-panel-btn" style="background-color: #555; margin-left: 10px;">Panel Admin</button>
         </section>
 
         <section id="survey-screen" class="hidden">
-            <h2>Cuestionario de Ansiedad para Estudiantes</h2>
+            <h2>Encuesta de Bienestar</h2>
             <form id="anxiety-survey-form">
                 </form>
             <button id="submit-survey-btn">Enviar Respuestas</button>
@@ -37,7 +42,19 @@
             <p id="result-message"></p>
             <button id="reset-survey-btn">Volver a Empezar</button>
         </section>
-    </div>
+
+        <section id="admin-panel-screen" class="hidden">
+            <h2>Panel de Administración</h2>
+            <div id="admin-data">
+                <p>Cargando datos...</p>
+            </div>
+            <button id="back-to-main-from-admin">Volver</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Bienestar Estudiantil. Todos los derechos reservados.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
