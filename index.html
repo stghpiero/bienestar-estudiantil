@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienestar Estudiantil</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,49 +13,81 @@
     </header>
 
     <main>
-        <section id="main-screen">
+        <div id="main-screen">
             <h2>¿Cómo te sientes hoy?</h2>
-            <p>Selecciona un emoji para reflejar tu estado de ánimo general antes de empezar:</p>
+            <p>Selecciona un emoji para reflejar tu estado de ánimo general:</p>
             <div class="emojis">
-                <span>😢</span>
-                <span>😔</span>
-                <span>😐</span>
-                <span>😊</span>
-                <span>😁</span>
+                <span class="emoji" data-mood="triste">😢</span>
+                <span class="emoji" data-mood="preocupado">😔</span>
+                <span class="emoji" data-mood="neutral">😐</span>
+                <span class="emoji" data-mood="feliz">😊</span>
+                <span class="emoji" data-mood="emocionado">😁</span>
             </div>
-            <div style="margin-top: 20px;">
-                <label for="userName" style="display: block; margin-bottom: 5px; font-weight: bold;">Tu nombre:</label>
-                <input type="text" id="userName" placeholder="Ingresa tu nombre" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 80%; max-width: 300px;">
+            <input type="text" id="userNameInput" placeholder="Ingresa tu nombre">
+            <div class="main-buttons">
+                <button id="startSurveyBtn">Entrar a Encuestas</button>
+                <button id="getPreliminaryHelpBtn">Obtener Nivel de Ansiedad y Ayuda Rápida</button>
+                <button id="adminPanelBtn">Panel Admin</button>
             </div>
-            <button id="start-survey-btn">Entrar a Encuestas</button>
-            <button id="admin-panel-btn" style="background-color: #555; margin-left: 10px;">Panel Admin</button>
-        </section>
+        </div>
 
-        <section id="survey-screen" class="hidden">
-            <h2>Encuesta de Bienestar</h2>
-            <form id="anxiety-survey-form">
-                </form>
-            <button id="submit-survey-btn">Enviar Respuestas</button>
-        </section>
+        <div id="survey-screen" class="hidden">
+            <h2>Encuesta de Bienestar Emocional</h2>
+            <div id="question-container">
+                </div>
+            <div class="navigation-buttons">
+                <button id="prevQuestionBtn" class="hidden">Anterior</button>
+                <button id="nextQuestionBtn">Siguiente</button>
+                <button id="submitSurveyBtn" class="hidden">Enviar Respuestas</button>
+            </div>
+        </div>
 
-        <section id="result-screen" class="hidden">
-            <h2>Tu Resultado</h2>
-            <p id="result-message"></p>
-            <button id="reset-survey-btn">Volver a Empezar</button>
-        </section>
+        <div id="results-screen" class="hidden">
+            <h2>Resultados de la Encuesta</h2>
+            <p>Gracias, <span id="resultsUserName"></span>. Tu nivel de ansiedad es: <strong id="anxietyLevel"></strong>.</p>
+            <p>Tu estado de ánimo reportado es: <span id="moodReported"></span>.</p>
+            <div id="recommendations">
+                <h3>Recomendaciones Personalizadas:</h3>
+                </div>
 
-        <section id="admin-panel-screen" class="hidden">
+            <div class="chart-container" style="position: relative; height:40vh; width:80vw; max-width: 600px; margin-top: 20px;">
+                <canvas id="anxietyChart"></canvas>
+            </div>
+
+            <button id="newSurveyBtn">Nueva Encuesta</button>
+            <button id="viewAdminPanelFromResults">Ver Panel Admin</button>
+        </div>
+
+        <div id="admin-panel" class="hidden">
             <h2>Panel de Administración</h2>
-            <div id="admin-data">
-                <p>Cargando datos...</p>
+            <div class="admin-controls">
+                <button id="clearDataBtn">Borrar Todos los Datos</button>
+                <button id="backToMainFromAdmin">Volver a Inicio</button>
             </div>
-            <button id="back-to-main-from-admin">Volver</button>
-        </section>
+            <div id="admin-data-display">
+                </div>
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2024 Bienestar Estudiantil. Todos los derechos reservados.</p>
     </footer>
+
+    <div id="help-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <span class="close-button" id="closeHelpModal">&times;</span>
+            <h3>Ayuda Rápida para la Ansiedad</h3>
+            <p>Si sientes ansiedad, aquí hay algunas técnicas que pueden ayudarte:</p>
+            <ul>
+                <li>**Respiración Profunda:** Inhala lentamente contando hasta 4, sostén contando hasta 7, y exhala contando hasta 8. Repite varias veces.</li>
+                <li>**Mindfulness (Atención Plena):** Concéntrate en el momento presente. Observa tu entorno, tus sensaciones, sin juzgar.</li>
+                <li>**Ejercicio Físico:** Una caminata corta o estiramientos pueden ayudar a liberar tensión.</li>
+                <li>**Conexión Social:** Habla con un amigo, familiar o un profesional de la salud.</li>
+                <li>**Limita la Información:** Evita la sobreexposición a noticias estresantes.</li>
+            </ul>
+            <p>Si la ansiedad es persistente o abrumadora, considera buscar apoyo profesional. No estás solo.</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
