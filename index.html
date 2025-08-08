@@ -24,15 +24,19 @@
                 <span class="emoji" data-mood="emocionado">😁</span>
             </div>
             <input type="text" id="userNameInput" placeholder="Ingresa tu nombre">
+            <p id="userStreakDisplay" class="hidden">¡Tu racha actual es de 0 días!</p>
             <div class="main-buttons">
-                <button id="startSurveyBtn">Entrar a Encuestas</button>
-                <button id="getPreliminaryHelpBtn">Obtener Nivel de Ansiedad y Ayuda Rápida</button>
+                <button id="startSurveyBtn">Empezar Encuesta</button>
+                <button id="viewHistoryBtn" class="hidden">Ver Historial</button>
                 <button id="adminPanelBtn">Panel Admin</button>
             </div>
         </div>
 
         <div id="survey-screen" class="hidden">
             <h2>Encuesta de Bienestar Emocional</h2>
+            <div class="progress-bar-container">
+                <div id="progressBar"></div>
+            </div>
             <div id="question-container">
                 </div>
             <div class="navigation-buttons">
@@ -48,19 +52,39 @@
             <p>Tu estado de ánimo reportado es: <span id="moodReported"></span>.</p>
             <div id="recommendations">
                 <h3>Recomendaciones Personalizadas:</h3>
-                </div>
-
-            <div class="chart-container" style="position: relative; height:40vh; width:80vw; max-width: 600px; margin-top: 20px;">
-                <canvas id="anxietyChart"></canvas>
             </div>
-
-            <button id="newSurveyBtn">Nueva Encuesta</button>
-            <button id="viewAdminPanelFromResults">Ver Panel Admin</button>
+            <div class="results-buttons">
+                <button id="newSurveyBtn">Nueva Encuesta</button>
+                <button id="viewResourcesBtn">Recursos y Ayuda</button>
+            </div>
+        </div>
+        
+        <div id="history-screen" class="hidden">
+            <h2>Historial de <span id="historyUserName"></span></h2>
+            <div id="history-container">
+                </div>
+            <div class="history-buttons">
+                <button id="backToMainFromHistory">Volver a Inicio</button>
+                <button id="viewResourcesFromHistory">Recursos y Ayuda</button>
+            </div>
         </div>
 
         <div id="admin-panel" class="hidden">
             <h2>Panel de Administración</h2>
             <div class="admin-controls">
+                <div class="admin-summary">
+                    <h3>Resumen General:</h3>
+                    <p>Promedio de Ansiedad: <strong id="avgAnxietyScore"></strong></p>
+                    <div id="anxietyLevelDistribution"></div>
+                </div>
+                <div class="chart-container">
+                    <h3>Puntaje Promedio por Pregunta</h3>
+                    <canvas id="anxietyChart"></canvas>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="userSearchInput" placeholder="Buscar por nombre de usuario...">
+                    <button id="userSearchBtn">Buscar</button>
+                </div>
                 <button id="clearDataBtn">Borrar Todos los Datos</button>
                 <button id="backToMainFromAdmin">Volver a Inicio</button>
             </div>
@@ -73,21 +97,25 @@
         <p>&copy; 2024 Bienestar Estudiantil. Todos los derechos reservados.</p>
     </footer>
 
-    <div id="help-modal" class="modal-overlay hidden">
+    <div id="resources-modal" class="modal-overlay hidden">
         <div class="modal-content">
-            <span class="close-button" id="closeHelpModal">&times;</span>
-            <h3>Ayuda Rápida para la Ansiedad</h3>
-            <p>Si sientes ansiedad, aquí hay algunas técnicas que pueden ayudarte:</p>
-            <ul>
-                <li>**Respiración Profunda:** Inhala lentamente contando hasta 4, sostén contando hasta 7, y exhala contando hasta 8. Repite varias veces.</li>
-                <li>**Mindfulness (Atención Plena):** Concéntrate en el momento presente. Observa tu entorno, tus sensaciones, sin juzgar.</li>
-                <li>**Ejercicio Físico:** Una caminata corta o estiramientos pueden ayudar a liberar tensión.</li>
-                <li>**Conexión Social:** Habla con un amigo, familiar o un profesional de la salud.</li>
-                <li>**Limita la Información:** Evita la sobreexposición a noticias estresantes.</li>
-            </ul>
-            <p>Si la ansiedad es persistente o abrumadora, considera buscar apoyo profesional. No estás solo.</p>
+            <span class="close-button" id="closeResourcesModal">&times;</span>
+            <h3>Recursos y Ayuda</h3>
+            <div id="resources-content">
+                </div>
         </div>
     </div>
+
+    <div id="user-profile-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <span class="close-button" id="closeUserProfileModal">&times;</span>
+            <h3 id="profileUserName"></h3>
+            <p id="profileUserStreak"></p>
+            <div id="profileHistoryTable">
+                </div>
+        </div>
+    </div>
+
 
     <script src="script.js"></script>
 </body>
